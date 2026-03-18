@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap');
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+body {
+  background: #080200;
+  color: #fff8f0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080200; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#f59e0b, #ff7c1a); border-radius: 2px; }
+
+/* ── Fonts ──────────────────────────────────────────────────────────────────── */
+.font-hindi { font-family: 'Noto Serif Devanagari', serif; }
+.font-display { font-family: 'Cinzel Decorative', Georgia, serif; }
+.font-serif { font-family: 'Crimson Text', Georgia, serif; }
+
+/* ── Temple background ──────────────────────────────────────────────────────── */
+.bg-temple {
+  background:
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(200,70,0,0.4) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 0% 60%, rgba(128,0,32,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 60%, rgba(180,90,0,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(100,20,0,0.3) 0%, transparent 70%),
+    #080200;
+}
+
+/* ── Gold shimmer text ─────────────────────────────────────────────────────── */
+.text-gold-shimmer {
+  background: linear-gradient(90deg,
+    #b8860b 0%, #fde68a 20%, #f59e0b 35%,
+    #fff8c0 50%, #f59e0b 65%, #fde68a 80%, #b8860b 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 6s linear infinite;
+}
+
+@keyframes gold-shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+/* ── Glass cards ───────────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 1rem;
+  transition: all 0.35s ease;
+}
+.glass:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(245,158,11,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 60px rgba(180,60,0,0.35), 0 0 0 1px rgba(245,158,11,0.1);
+}
+.glass-card {
+  background: rgba(20,7,0,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245,158,11,0.18);
+  border-radius: 1rem;
+}
+
+/* ── Sacred gradient border ────────────────────────────────────────────────── */
+.sacred-border {
+  position: relative;
+  border-radius: 1rem;
+}
+.sacred-border::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  background: linear-gradient(135deg, #f59e0b, #ff7c1a, #e879a0, #ff7c1a, #f59e0b);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.sacred-border:hover::before { opacity: 1; }
+
+/* ── Glow ──────────────────────────────────────────────────────────────────── */
+.glow-gold {
+  text-shadow: 0 0 30px rgba(245,158,11,0.9), 0 0 70px rgba(245,158,11,0.5), 0 0 120px rgba(245,158,11,0.25);
+}
+.glow-saffron {
+  text-shadow: 0 0 20px rgba(255,124,26,0.9), 0 0 50px rgba(255,124,26,0.5);
+}
+.box-glow {
+  box-shadow: 0 0 40px rgba(245,158,11,0.25), 0 0 80px rgba(245,158,11,0.08), inset 0 0 40px rgba(245,158,11,0.04);
+}
+
+/* ── Divider ───────────────────────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: rgba(245,158,11,0.6);
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.5), transparent);
+}
+
+/* ── Maharaj frame ─────────────────────────────────────────────────────────── */
+.maharaj-frame {
+  position: relative;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(from 0deg, #f59e0b, #ff7c1a, #fde68a, #f59e0b, #e879a0, #f59e0b);
+  animation: frame-spin 10s linear infinite;
+}
+@keyframes frame-spin {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+.maharaj-frame img { border-radius: 50%; display: block; z-index: 1; }
+
+/* ── Divine photo frame (rectangular) ─────────────────────────────────────── */
+.divine-frame {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 3px;
+  background: linear-gradient(135deg, #f59e0b, #ff7c1a, #fde68a, #b8860b);
+  box-shadow: 0 0 40px rgba(245,158,11,0.5), 0 0 80px rgba(245,158,11,0.2);
+}
+.divine-frame img {
+  border-radius: 1rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.divine-frame::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(245,158,11,0.3);
+  animation: frame-pulse 3s ease-in-out infinite;
+}
+.divine-frame::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 2rem;
+  border: 1px solid rgba(245,158,11,0.12);
+  animation: frame-pulse 3s ease-in-out infinite 1.5s;
+}
+@keyframes frame-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.02); }
+}
+
+/* ── Emotion card ──────────────────────────────────────────────────────────── */
+.emotion-card {
+  background: linear-gradient(160deg, rgba(25,10,0,0.95) 0%, rgba(45,17,0,0.9) 100%);
+  border: 1px solid rgba(245,158,11,0.12);
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+.emotion-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(245,158,11,0.18) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.emotion-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  border-color: rgba(245,158,11,0.6);
+  box-shadow: 0 20px 50px rgba(180,60,0,0.5), 0 0 0 1px rgba(245,158,11,0.3);
+}
+.emotion-card:hover::before { opacity: 1; }
+.emotion-card.selected {
+  background: linear-gradient(160deg, rgba(180,60,0,0.45) 0%, rgba(128,0,32,0.35) 100%);
+  border-color: #f59e0b;
+  box-shadow: 0 0 30px rgba(245,158,11,0.5), 0 0 0 1px rgba(245,158,11,0.7);
+}
+.emotion-card.selected::before { opacity: 1; }
+
+/* ── Chat bubbles ──────────────────────────────────────────────────────────── */
+.chat-user {
+  background: linear-gradient(135deg, #b84d00, #ff7c1a);
+  border-radius: 18px 18px 4px 18px;
+}
+.chat-ai {
+  background: linear-gradient(135deg, rgba(30,10,0,0.95), rgba(55,22,0,0.95));
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 18px 18px 18px 4px;
+}
+
+/* ── Typing dots ───────────────────────────────────────────────────────────── */
+.typing-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #f59e0b;
+  animation: typing 1.4s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%,80%,100% { transform: scale(0.7); opacity: 0.4; }
+  40% { transform: scale(1.2); opacity: 1; }
+}
+
+/* ── Particles ─────────────────────────────────────────────────────────────── */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: particle-rise linear infinite;
+  z-index: 0;
+}
+@keyframes particle-rise {
+  0%   { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.5); }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.25; }
+  100% { opacity: 0; transform: translateY(-150px) rotate(360deg) scale(1.1); }
+}
+
+/* ── Mandala ring ──────────────────────────────────────────────────────────── */
+.mandala-ring {
+  border-radius: 50%;
+  border: 1px solid rgba(245,158,11,0.07);
+  position: absolute;
+  animation: spin-slow linear infinite;
+}
+.mandala-ring-bright {
+  border-color: rgba(245,158,11,0.2);
+}
+@keyframes spin-slow {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+/* ── Float ─────────────────────────────────────────────────────────────────── */
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-16px) rotate(2deg); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes float2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-float2 { animation: float2 4s ease-in-out infinite; }
+
+/* ── Pulse slow ────────────────────────────────────────────────────────────── */
+@keyframes pulse-slow { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+
+/* ── Hero bg photo ─────────────────────────────────────────────────────────── */
+.hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  filter: blur(2px) brightness(0.18) saturate(1.4);
+  transform: scale(1.05);
+}
+
+/* ── Shrine image ──────────────────────────────────────────────────────────── */
+.shrine-img {
+  border-radius: 1rem;
+  border: 1px solid rgba(245,158,11,0.25);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 20px rgba(245,158,11,0.1);
+}
+.shrine-img:hover {
+  border-color: rgba(245,158,11,0.6);
+  box-shadow: 0 16px 50px rgba(180,60,0,0.4), 0 0 40px rgba(245,158,11,0.2);
+  transform: scale(1.03) translateY(-4px);
+}
+
+/* ── Lamp glow decoration ───────────────────────────────────────────────────── */
+.lamp-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,160,30,0.5) 0%, transparent 70%);
+  pointer-events: none;
+  animation: lamp-flicker 2.5s ease-in-out infinite;
+}
+@keyframes lamp-flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  30% { opacity: 0.75; transform: scale(0.95); }
+  60% { opacity: 0.9; transform: scale(1.05); }
+}
+
+/* ── Scrolling marquee ──────────────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── 3D Floating Mantras ────────────────────────────────────────────────────── */
+/* Outer div holds static 3D perspective+rotate via inline style.
+   Inner span just floats up/down — no conflict with the 3D transform. */
+/* opacity stays on outer div (static), inner only animates translateY */
+@keyframes mantra-rise {
+  0%,100% { transform: translateY(0px); }
+  40%     { transform: translateY(-16px); }
+  75%     { transform: translateY(-6px); }
+}
+
+.mantra-inner {
+  display: inline-block;
+  animation: mantra-rise 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Premium Glass upgrade ──────────────────────────────────────────────────── */
+.glass-premium {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245,158,11,0.18);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ── Navbar glass ───────────────────────────────────────────────────────────── */
+.nav-glass {
+  background: linear-gradient(180deg,
+    rgba(8,2,0,0.92) 0%,
+    rgba(12,4,0,0.85) 100%);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid rgba(245,158,11,0.08);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3), 0 1px 0 rgba(245,158,11,0.05);
+}
+
+/* ── Sacred divider ─────────────────────────────────────────────────────────── */
+.sacred-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.sacred-divider::before,
+.sacred-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.35), transparent);
+}
+
+/* ── Diya flicker ───────────────────────────────────────────────────────────── */
+@keyframes diya-flicker {
+  0%,100% { text-shadow: 0 0 8px rgba(255,160,30,0.8), 0 0 20px rgba(255,120,0,0.5); transform: scale(1) rotate(-3deg); }
+  25%     { text-shadow: 0 0 15px rgba(255,200,50,1),  0 0 35px rgba(255,150,0,0.8); transform: scale(1.1) rotate(2deg); }
+  50%     { text-shadow: 0 0 6px rgba(255,140,20,0.7),  0 0 15px rgba(200,80,0,0.4); transform: scale(0.95) rotate(-1deg); }
+  75%     { text-shadow: 0 0 12px rgba(255,180,40,0.9), 0 0 28px rgba(220,100,0,0.6); transform: scale(1.05) rotate(3deg); }
+}
+.diya-flame {
+  display: inline-block;
+  animation: diya-flicker 1.8s ease-in-out infinite;
+}
+
+/* ── Glow text pulse ────────────────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%,100% { text-shadow: 0 0 10px rgba(245,158,11,0.4), 0 0 30px rgba(245,158,11,0.2); }
+  50%     { text-shadow: 0 0 20px rgba(245,158,11,0.7), 0 0 60px rgba(245,158,11,0.3), 0 0 80px rgba(180,60,0,0.2); }
+}
+.glow-text-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* ── Challenge nav button ───────────────────────────────────────────────────── */
+.challenge-nav-btn {
+  color: rgba(245,158,11,0.9);
+  border: 1px solid rgba(245,158,11,0.2);
+  background: rgba(245,158,11,0.06);
+}
+.challenge-nav-btn:hover {
+  background: rgba(245,158,11,0.15);
+  border-color: rgba(245,158,11,0.5);
+  box-shadow: 0 0 15px rgba(245,158,11,0.2);
+}
+
+/* ── Nav link hover ─────────────────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.7), transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* ── Card shimmer border ────────────────────────────────────────────────────── */
+@keyframes border-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.card-shimmer-border {
+  position: relative;
+}
+.card-shimmer-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(245,158,11,0.4) 40%,
+    rgba(255,180,50,0.6) 50%,
+    rgba(245,158,11,0.4) 60%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: border-shimmer 4s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
