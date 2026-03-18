@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ChevronRight, RotateCcw } from 'lucide-react'
+import { ArrowLeft, ChevronRight, RotateCcw, Search } from 'lucide-react'
 import FloatingMantras from '@/components/FloatingMantras'
 
 const QUESTIONS = [
